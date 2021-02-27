@@ -17,7 +17,11 @@ public class Player : MonoBehaviour
 
     [SerializeField] float kickTime = 2f;
 
+    [SerializeField] AudioClip music;
 
+    [SerializeField] [Range(0, 1)] float musicVolume = 0.75f;
+
+   
 
     float xMin, xMax, yMin, yMax;
 
@@ -30,6 +34,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetUpMoveBoundaries();
+        AudioSource.PlayClipAtPoint(music, Camera.main.transform.position, musicVolume);
     }
 
 
@@ -95,7 +100,7 @@ public class Player : MonoBehaviour
 
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + ypadding;
 
-        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, (float)0.6, 0)).y - ypadding;
+        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - ypadding;
 
     }
     
